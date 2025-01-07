@@ -28,7 +28,7 @@ function DetailCom() {
           <Card.Text>
             <strong>Giá:</strong> {asset.price} VND
           </Card.Text>
-          <Link to={'/list'}>
+          <Link to={'/'}>
             <Button variant="primary">Trở lại</Button>
           </Link>
         </Card.Body>

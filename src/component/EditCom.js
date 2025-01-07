@@ -23,7 +23,7 @@ export default function EditCom() {
         const newValueAsset = { ...value };
         await UpdateAsset(id, newValueAsset);
         console.log("----update roi day----")
-        navigate('/list');
+        navigate('/');
     };
 
     const handleValidate = Yup.object({
@@ -56,7 +56,7 @@ export default function EditCom() {
                             </div>
                             <div className="d-flex">
                                 <Button variant="primary" type="submit">Lưu</Button>
-                                <Link to="/list">
+                                <Link to="/">
                                     <Button variant="secondary" className="ms-2">Trở lại</Button>
                                 </Link>
                             </div>

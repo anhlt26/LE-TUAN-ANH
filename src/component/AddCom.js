@@ -20,7 +20,7 @@ function AddCom() {
         const asset = { ...value };
         await AddNewAsset(asset);
         console.log("----them dươc ne----")
-        navigate('/list');
+        navigate('/');
     };
 
     const handleValidate = Yup.object({
@@ -49,7 +49,7 @@ function AddCom() {
                             </div>
                             <div className="d-flex">
                             <Button variant="primary" type="submit">Thêm</Button>
-                                <Link to="/list">
+                                <Link to="/">
                                     <Button variant="secondary" className="ms-2">Trở lại</Button>
                                 </Link>
 
