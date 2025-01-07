@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { AddNewAsset, GetAllAsset } from "../function/listasset";
-import { useNavigate } from "react-router-dom";
+import { AddNewAsset } from "../function/listasset";
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
+import { Button, Card } from 'react-bootstrap';
 
 function AddCom() {
     const [asset, setAsset] = useState({
-        AssetNumber: "",
-        type: "",
-        Brand: "",
-        Model: "",
-        ComputerName: "",
-        CPU: "",
-        hardisk: "",
-        memorry: "",
-        SerialNumber: "",
-        Windows: "",
-        Name: "",
-        Userr: "",
-        Dept: "",
-        Status: ""
+        title: "",
+        price: "",
+        description: "",
     });
 
     const navigate = useNavigate();
@@ -32,63 +22,43 @@ function AddCom() {
         console.log("----them dươc ne----")
         navigate('/list');
     };
+
     const handleValidate = Yup.object({
-        AssetNumber: Yup.string().required("Tên không được để trống"),
-        type: Yup.string().required("Phải chọn"),
-        Brand: Yup.string().required("K de trong"),
-        Model: Yup.string().required("Model không được để trống"),
-        ComputerName: Yup.string().required("Tên máy tính không được để trống"),
+        title: Yup.string().required("Tên không được để trống"),
+        price: Yup.string().required("Không được để trống")
     });
+
     return (
-        <>
-            <Formik initialValues={asset} onSubmit={handleSubmit} validationSchema={handleValidate}>
-                <Form>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>AssetNumber</th>
-                                    <th>type</th>
-                                    <th>Brand</th>
-                                    <th>Model</th>
-                                    <th>ComputerName</th>
-                                    <th>CPU</th>
-                                    <th>hardisk</th>
-                                    <th>memorry</th>
-                                    <th>SerialNumber</th>
-                                    <th>Windows</th>
-                                    <th>Name</th>
-                                    <th>Userr</th>
-                                    <th>Dept</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><Field type='text' name='AssetNumber' /></td>
-                                    <td><Field type='text' name='type' /></td>
-                                    <td><Field type='text' name='Brand' /></td>
-                                    <td><Field type='text' name='Model' /></td>
-                                    <td><Field type='text' name='ComputerName' /></td>
-                                    <td><Field type='text' name='CPU' /></td>
-                                    <td><Field type='number' name='hardisk' /></td>
-                                    <td><Field type='number' name='memorry' /></td>
-                                    <td><Field type='text' name='SerialNumber' /></td>
-                                    <td><Field type='text' name='Windows' /></td>
-                                    <td><Field type='text' name='Name' /></td>
-                                    <td><Field type='text' name='Userr' /></td>
-                                    <td><Field type='text' name='Dept' /></td>
-                                    <td><Field type='text' name='Status' /></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <button type={'submit'}>Save</button>
-                    </div>
-                </Form>
-            </Formik>
-        </>
+        <div className="container mt-5">
+            <Card style={{ maxWidth: '600px', margin: 'auto' }}>
+                <Card.Header as="h5">Thêm sản phẩm</Card.Header>
+                <Card.Body>
+                    <Formik initialValues={asset} onSubmit={handleSubmit} validationSchema={handleValidate}>
+                        <Form>
+                            <div className="mb-3">
+                                <label htmlFor="title" className="form-label">Tên Sản Phẩm</label>
+                                <Field type="text" name="title" id="title" className="form-control" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="price" className="form-label">Giá</label>
+                                <Field type="text" name="price" id="price" className="form-control" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="description" className="form-label">Mô Tả</label>
+                                <Field type="text" name="description" id="description" className="form-control" />
+                            </div>
+                            <div className="d-flex">
+                            <Button variant="primary" type="submit">Thêm</Button>
+                                <Link to="/list">
+                                    <Button variant="secondary" className="ms-2">Trở lại</Button>
+                                </Link>
+
+                            </div>
+                        </Form>
+                    </Formik>
+                </Card.Body>
+            </Card>
+        </div>
     );
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-let url = `http://localhost:8080/product`
+let url = `http://localhost:3000/products`
 
 
 // tìm tất cả asset trên json

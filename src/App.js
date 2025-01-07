@@ -1,6 +1,5 @@
 import './App.css';
-import { Routes,Route } from 'react-router-dom';
-import HomeCom from './component/HomeCom';
+import { Routes, Route } from 'react-router-dom';
 import AddCom from './component/AddCom';
 import ListCom from './component/ListCom';
 import DetailCom from './component/DetailCom';
@@ -10,15 +9,14 @@ import HeaderCom from './component/HeaderCom';
 function App() {
   return (
     <>
-    <HeaderCom/>
-    <Routes>
-    <Route path={'/home'} element={<HomeCom/>} />
-    <Route path={'/list'} element={<ListCom/>} />
-    <Route path={'/list/add'} element={<AddCom/>} />
-    <Route path={'/list/detail/:id'} element={<DetailCom/>} />
-    <Route path={'list/edit/:id'} element={<EditCom/>} />
-    </Routes>
-    
+      <HeaderCom />
+      <Routes>
+        <Route path={'/list'} element={<ListCom />} />
+        <Route path={'/list/add'} element={<AddCom />} />
+        <Route path={'/list/detail/:id'} element={<DetailCom />} />
+        <Route path={'list/edit/:id'} element={<EditCom />} />
+      </Routes>
+
     </>
   );
 }
